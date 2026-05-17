@@ -24,25 +24,21 @@
 
 namespace qtype_geogebra\privacy;
 
-use core_privacy\local\metadata\null_provider;
-
 /**
  * Privacy Subsystem for qtype_geogebra implementing null_provider.
  *
+ * @package    qtype_geogebra
  * @copyright  2022 Martin Putzlocher <m.putzlocher@stiftland-gymnasium.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider implements \core_privacy\local\metadata\null_provider {
 
     /**
-     * Get the language string identifier with the component's language
-     * file to explain why this plugin stores no data.
+     * Get the language string identifier explaining why this plugin stores no data.
      *
-     * @return  string
+     * @return string
      */
-    public static function get_reason() : string {
+    public static function get_reason(): string {
         return 'privacy:metadata';
     }
 }
-
-

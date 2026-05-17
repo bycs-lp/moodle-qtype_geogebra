@@ -85,3 +85,7 @@ $string['width'] = 'Width';
 $string['widthnotzero'] = 'You have to specify a value greater than zero for the width';
 $string['width_help'] = 'By default the GeoGebra applet will be scaled automatically to fit the quiz layout. If for some reasons this does not fit your needs, you can specify width and height manually. If the values are too high students will see a scrollbar on small screens to display the full applet.';
 $string['willbereadfromfile'] = 'Will be read from GeoGebra... (see help button)';
+$string['manuallygraded'] = 'Response graded manually';
+$string['automaticallygraded'] = 'Response graded automatically';
+$string['exerciseresultmissing'] = 'The exercise result in the response is missing. Probably JavaScript isn\'t turned on in the Browser or an unknown error occurred';
+$string['noanswersorrandomizationallowed'] = 'Answer variables are not applicable when using GeoGebra Exercise mode.';
