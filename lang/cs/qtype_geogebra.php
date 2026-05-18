@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Přidat omezení (podmínky) pro proměnné.';
+$string['addconstraints'] = 'Přidat omezení (podmínky) pro proměnné.';
 $string['addmorevarblanks'] = 'Místo pro {no} proměnných';
 $string['answerinvalid'] = 'Odpověď obsahuje neplatný řetězec. To by se nemělo stát.';
 $string['answermissing'] = 'Odpověď nebyla odeslána. Pravděpodobně není v prohlížeči zapnutý JavaScript nebo došlo k neznámé chybě.';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'Hodnoty Min a Max pro náhodnou volbu proměnné {$a} nej
 $string['minplusstepgtmax'] = 'Min plus přírůstek je větší než Max pro proměnnou {$a}, pravděpodobně to bude třeba opravit ve Vašem GeoGebra souboru.';
 $string['noappletloaded'] = 'Žádný applet není načten! Zkontrolujte, zda je adresa URL správná a zda vidíte applet po zvolení odkazu nebo (znovu)načtení appletu.';
 $string['nofractionsumeq1'] = 'Alespoň jedna kombinace hodnocených kriterií musí dát v součtu 100%';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'Otázky, které může student vyřešit pomocí GeoGebry';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'Přidat úlohu s GeoGebrou';
 $string['pluginnameediting'] = 'Upravit úlohu s GeoGebrou';
 $string['pluginnamesummary'] = 'Výpočetní otázka která požívá GeoGebru ke zobrazení zadání a ověření odpovědi při vyplňování testu.';

@@ -38,7 +38,6 @@ require_once($CFG->dirroot . '/question/type/geogebra/tests/fixtures/ggbstringsf
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_geogebra_test_helper extends question_test_helper {
-
     /**
      * Get the list of example question names.
      *

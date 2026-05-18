@@ -31,7 +31,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_geogebra_renderer extends qtype_renderer {
-
     /**
      * Generate the display of the formulation part of the question.
      *
@@ -64,10 +63,10 @@ class qtype_geogebra_renderer extends qtype_renderer {
         $validationerror = '';
         if ($qa->get_state() == question_state::$invalid) {
             $validationerror = $question->get_validation_error([
-                'answer' => $qa->get_last_qt_var('answer'),
-                'ggbxml' => $qa->get_last_qt_var('ggbxml'),
-                'ggbbase64' => $qa->get_last_qt_var('ggbbase64'),
-                'exerciseresult' => $qa->get_last_qt_var('exerciseresult'),
+                'answer' => $qa->get_last_qt_var('answer') ?? '',
+                'ggbxml' => $qa->get_last_qt_var('ggbxml') ?? '',
+                'ggbbase64' => $qa->get_last_qt_var('ggbbase64') ?? '',
+                'exerciseresult' => $qa->get_last_qt_var('exerciseresult') ?? '',
             ]);
         }
 

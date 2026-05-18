@@ -35,7 +35,6 @@ require_once($CFG->dirroot . '/question/type/shortanswer/questiontype.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_geogebra extends question_type {
-
     /**
      * Return an array with all the database fields used by this question type.
      *

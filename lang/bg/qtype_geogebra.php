@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Добавяне на ограничения (условия) към променливи.';
+$string['addconstraints'] = 'Добавяне на ограничения (условия) към променливи.';
 $string['addmorevarblanks'] = 'Празни места за още {no} променливи';
 $string['answerinvalid'] = 'Низът отговор не е валиден. Това не трябва да се случва.';
 $string['answermissing'] = 'Липсва отговор. Вероятно JavaScript не е включена в браузъра или е възникнала неизвестна грешка.';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'Минимумът и максимумът за ранд�
 $string['minplusstepgtmax'] = 'Минимумът плюс инкремента е по-голям от максимума за променливата {$a}. Може би трябва да коригирате това във Вашия GeoGebra файл.';
 $string['noappletloaded'] = 'Няма зареден аплет! Проверете дали URL адресът е верен и дали виждате аплет след избиране на линк или (пре)зареждане на аплета.';
 $string['nofractionsumeq1'] = 'Поне една комбинация от оценки трябва да има сума 100%';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'Въпросу, на които ученикът да отговори, използвайки GeoGebra';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'Добавяне на GeoGebra въпрос';
 $string['pluginnameediting'] = 'Редактиране на GeoGebra въпрос';
 $string['pluginnamesummary'] = 'Версия на изчислените въпроси, която използва GeoGebra, за да покаже въпроса и да потвърди отговора, когато се провежда викторина.';

@@ -42,7 +42,6 @@ require_once($CFG->dirroot . '/question/type/geogebra/tests/fixtures/ggbstringsf
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class question_helper_test extends advanced_testcase {
-
     /**
      * Data provider for inequality syntax validation.
      *
@@ -66,6 +65,8 @@ final class question_helper_test extends advanced_testcase {
     }
 
     /**
+     * Test inequality syntax validation.
+     *
      * @dataProvider inequality_syntax_provider
      */
     public function test_is_valid_inequality(string $inequality, bool $expected): void {
@@ -88,6 +89,8 @@ final class question_helper_test extends advanced_testcase {
     }
 
     /**
+     * Test inequality validation against randomized vars.
+     *
      * @dataProvider inequality_vars_provider
      */
     public function test_is_valid_inequality_for_randomizedvars(
@@ -122,6 +125,8 @@ final class question_helper_test extends advanced_testcase {
     }
 
     /**
+     * Test check_inequality with various operators and values.
+     *
      * @dataProvider check_inequality_provider
      */
     public function test_check_inequality(string $op, int|float $x, int|float $y, bool $expected): void {
@@ -142,10 +147,15 @@ final class question_helper_test extends advanced_testcase {
     }
 
     /**
+     * Test random_incremented_value deterministic edge cases.
+     *
      * @dataProvider random_incremented_edge_cases_provider
      */
     public function test_random_incremented_value_edge_cases(
-        int|float $min, int|float $max, int|float $increment, int|float $expected,
+        int|float $min,
+        int|float $max,
+        int|float $increment,
+        int|float $expected,
     ): void {
         $this->assertEquals($expected, question_helper::random_incremented_value($min, $max, $increment));
     }
@@ -177,7 +187,7 @@ final class question_helper_test extends advanced_testcase {
         $inequalities = [[0 => 'a<b', 1 => 'a', 2 => '<', 3 => 'b']];
         $result = question_helper::randomize_vars($vars, $inequalities);
         $this->assertNull($result);
-        $this->assertLessThan($vars['b']['val'], $vars['a']['val']);
+        $this->assertGreaterThan($vars['a']['val'], $vars['b']['val']);
     }
 
     public function test_randomize_vars_impossible_constraints(): void {
@@ -219,13 +229,19 @@ final class question_helper_test extends advanced_testcase {
 
     public function test_is_valid_inequality_for_slider_minmax(): void {
         $this->assertTrue(question_helper::is_valid_inequality_for_slider_minmax(
-            'a<b', 'a,b', ggbstringsfortesting::$pointxml,
+            'a<b',
+            'a,b',
+            ggbstringsfortesting::$pointxml,
         ));
         $this->assertFalse(question_helper::is_valid_inequality_for_slider_minmax(
-            'x<y', 'x,y', ggbstringsfortesting::$pointxml,
+            'x<y',
+            'x,y',
+            ggbstringsfortesting::$pointxml,
         ));
         $this->assertFalse(question_helper::is_valid_inequality_for_slider_minmax(
-            'a<b', 'a,b', 'not xml',
+            'a<b',
+            'a,b',
+            'not xml',
         ));
     }
 }

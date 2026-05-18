@@ -51,7 +51,6 @@ require_once($CFG->dirroot . '/question/type/geogebra/edit_geogebra_form.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class questiontype_test extends advanced_testcase {
-
     /** @var qtype_geogebra */
     private qtype_geogebra $qtype;
 
@@ -65,14 +64,25 @@ final class questiontype_test extends advanced_testcase {
         parent::tearDown();
     }
 
+    /**
+     * Get test question data with two answer variables.
+     *
+     * @return stdClass
+     */
     private function get_test_question_data(): stdClass {
         $q = new stdClass();
         $q->id = 1;
         $q->idnumber = 0;
         $q->options = new stdClass();
         $q->options->answers = [
-            13 => (object) ['id' => 13, 'answer' => 'e', 'fraction' => 1, 'feedback' => 'yes', 'feedbackformat' => FORMAT_MOODLE],
-            14 => (object) ['id' => 14, 'answer' => 'e1', 'fraction' => 0.5, 'feedback' => 'yes', 'feedbackformat' => FORMAT_MOODLE],
+            13 => (object) [
+                'id' => 13, 'answer' => 'e', 'fraction' => 1,
+                'feedback' => 'yes', 'feedbackformat' => FORMAT_MOODLE,
+            ],
+            14 => (object) [
+                'id' => 14, 'answer' => 'e1', 'fraction' => 0.5,
+                'feedback' => 'yes', 'feedbackformat' => FORMAT_MOODLE,
+            ],
         ];
         return $q;
     }

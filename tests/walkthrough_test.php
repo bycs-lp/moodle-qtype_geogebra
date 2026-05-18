@@ -44,7 +44,6 @@ require_once($CFG->dirroot . '/question/type/geogebra/tests/helper.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class walkthrough_test extends qbehaviour_walkthrough_test_base {
-
     public function test_interactive_point(): void {
         $q = test_question_maker::make_question('geogebra', 'point');
         $this->start_attempt_at_question($q, 'interactive', 1);

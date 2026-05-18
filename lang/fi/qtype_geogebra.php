@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Lisää rajoitteita (ehtoja) muuttujiin.';
+$string['addconstraints'] = 'Lisää rajoitteita (ehtoja) muuttujiin.';
 $string['addmorevarblanks'] = 'Aukko {no}:lle muuttujalle';
 $string['answerinvalid'] = 'Vastaus-merkkijono ei ole kelvollinen. Näin ei pitäisi tapahtua.';
 $string['answermissing'] = 'Vastaus puuttuu. Luultavasti JavaScript ei ole käytössä selaimessa tai tapahtui tuntematon virhe.';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'Min ja Max eivät ole oikein määriteltyjä muuttujan {$
 $string['minplusstepgtmax'] = 'Min plus lisäys (Animaatioaskel) on suurempi kuin muuttujan {$a} Max. Sinun on luultavasti korjattava tämä GeoGebra-tiedostossa.';
 $string['noappletloaded'] = 'Applettia ei ole ladattu! Tarkista onko URL-osoite oikea ja näetkö appletin valittuasi linkin tai ladattuasi appletin (uudelleen).';
 $string['nofractionsumeq1'] = 'Ainakin yhden arviointien yhdistelmän täytyy summautua 100 %:iin.';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'Kysymykset, joiden ratkaisemisessa oppilas voi käyttää GeoGebraa';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'GeoGebra-kysymyksen lisääminen';
 $string['pluginnameediting'] = 'GeoGebra-kysymyksen muokkaaminen';
 $string['pluginnamesummary'] = 'Laskutehtävätyyppi, joka käyttää GeoGebraa näyttämään kysymyksen ja tarkistamaan vastauksen kyselyssä.';

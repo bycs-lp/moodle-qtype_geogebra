@@ -31,7 +31,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class backup_qtype_geogebra_plugin extends backup_qtype_plugin {
-
     /**
      * Returns the qtype information to attach to question element.
      *

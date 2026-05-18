@@ -37,7 +37,6 @@ require_once($CFG->dirroot . '/question/type/calculated/questiontype.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_geogebra_question extends question_graded_automatically {
-
     /** @var question_answer[] The question answers. */
     public array $answers = [];
 
@@ -245,10 +244,10 @@ class qtype_geogebra_question extends question_graded_automatically {
 
         if ($this->isexercise) {
             $ret = $ret && question_utils::arrays_same_at_key_missing_is_blank(
-                    $prevresponse,
-                    $newresponse,
-                    'exerciseresult'
-                );
+                $prevresponse,
+                $newresponse,
+                'exerciseresult'
+            );
         }
 
         return $ret;
@@ -336,10 +335,17 @@ class qtype_geogebra_question extends question_graded_automatically {
             return get_string('ggbxmlmissing', 'qtype_geogebra');
         }
         if (!empty($this->answers)) {
-            if (!array_key_exists('answer', $response) || ($response['answer'] === '' && $response['answer'] !== '0')) {
+            if (
+                !array_key_exists('answer', $response)
+                || $response['answer'] === null
+                || ($response['answer'] === '' && $response['answer'] !== '0')
+            ) {
                 return get_string('answermissing', 'qtype_geogebra');
             }
-            if (preg_replace('/[^01]/', '', $response['answer']) !== $response['answer']) {
+
+            $answer = (string) $response['answer'];
+
+            if (preg_replace('/[^01]/', '', $answer) !== $answer) {
                 return get_string('answerinvalid', 'qtype_geogebra');
             }
         }

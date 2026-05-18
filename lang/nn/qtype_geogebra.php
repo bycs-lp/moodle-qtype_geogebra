@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Legg til begrensninger (vilkår) til variabler.';
+$string['addconstraints'] = 'Legg til begrensninger (vilkår) til variabler.';
 $string['addmorevarblanks'] = 'Mellomrom for {no} flere variabler';
 $string['answerinvalid'] = 'Svarstrengen i tilbakemeldingen er ugyldig. Dette bør ikke skje.';
 $string['answermissing'] = 'Svaret i tilbakemeldingen mangler. Sannsynligvis er ikke JavaScript aktivert i nettleseren, eller en ukjent feil kan ha oppstått.';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'Min og Maks for tilfeldig generering er ikke spesifisert 
 $string['minplusstepgtmax'] = 'Min pluss animasjonstrinnet er større enn Maks for variabel {$a}. Du må trolig rette opp dette i GeoGebra-fila.';
 $string['noappletloaded'] = 'Ingen applet ble lastet opp! Seek om URL-en er riktig og se om du kan finne en applet etter å ha valgt en lenke eller etter å ha lastet opp appleten på ny.';
 $string['nofractionsumeq1'] = 'Minst én kombinasjon av grader må ha en sum på 100 %';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'Spørsmål der eleven kan svare ved å bruke GeoGebra';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'Legg til et GeoGebra-spørsmål';
 $string['pluginnameediting'] = 'Redigering av GeoGebra-spørsmål';
 $string['pluginnamesummary'] = 'En type spørsmål som bruker GeoGebra til å vise spørsmålet og til å vurdere om svaret er riktig når testen er tatt.';

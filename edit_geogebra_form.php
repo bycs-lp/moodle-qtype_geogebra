@@ -37,7 +37,6 @@ require_once($CFG->dirroot . '/question/type/geogebra/question.php');
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_geogebra_edit_form extends question_edit_form {
-
     /** @var question_type The question type object. */
     public $qtypeobj;
 
@@ -97,8 +96,13 @@ class qtype_geogebra_edit_form extends question_edit_form {
      * @param string $answersoption Reference to return the name of $question->options field holding answers.
      * @return array Array of form fields.
      */
-    protected function get_per_answer_fields($mform, $label, $gradeoptions,
-                                             &$repeatedoptions, &$answersoption): array {
+    protected function get_per_answer_fields(
+        $mform,
+        $label,
+        $gradeoptions,
+        &$repeatedoptions,
+        &$answersoption
+    ): array {
         $gradestr = get_string('gradenoun');
 
         $repeated = [];
@@ -107,8 +111,12 @@ class qtype_geogebra_edit_form extends question_edit_form {
         $answeroptions[] = $mform->createElement('select', 'fraction', $gradestr, $gradeoptions);
         $repeated[0] = $mform->createElement('group', 'answeroptions', $label, $answeroptions, null, false);
         $repeated[1] = $mform->createElement('hidden', 'feedback');
-        $repeated[2] = $mform->createElement('text', 'feedbackfromfile',
-            get_string('feedback', 'question'), ['size' => '60', 'disabled' => 'disabled']);
+        $repeated[2] = $mform->createElement(
+            'text',
+            'feedbackfromfile',
+            get_string('feedback', 'question'),
+            ['size' => '60', 'disabled' => 'disabled']
+        );
         $repeated[3] = $mform->createElement('hidden', 'format');
 
         $repeatedoptions['answer']['type'] = PARAM_RAW;
@@ -143,8 +151,12 @@ class qtype_geogebra_edit_form extends question_edit_form {
         $mform->addElement('selectyesno', 'isexercise', get_string('isexercise', 'qtype_geogebra'));
         $mform->addHelpButton('isexercise', 'isexercise', 'qtype_geogebra');
 
-        $mform->addElement('advcheckbox', 'forcedimensions', get_string('forcedimensionsenable', 'qtype_geogebra'),
-            get_string('forcedimensions', 'qtype_geogebra'));
+        $mform->addElement(
+            'advcheckbox',
+            'forcedimensions',
+            get_string('forcedimensionsenable', 'qtype_geogebra'),
+            get_string('forcedimensions', 'qtype_geogebra')
+        );
         $mform->setDefault('forcedimensions', 0);
 
         $mform->addElement('text', 'width', get_string('width', 'qtype_geogebra'));
@@ -157,8 +169,13 @@ class qtype_geogebra_edit_form extends question_edit_form {
         $mform->addHelpButton('height', 'height', 'qtype_geogebra');
         $mform->hideIf('height', 'forcedimensions');
 
-        $this->add_per_answer_fields($mform, get_string('variableno', 'qtype_geogebra', '{no}'),
-            question_bank::fraction_options(), 4, 1);
+        $this->add_per_answer_fields(
+            $mform,
+            get_string('variableno', 'qtype_geogebra', '{no}'),
+            question_bank::fraction_options(),
+            4,
+            1
+        );
 
         if (array_key_exists('answeroptions[0]', $mform->_elementIndex)) {
             $mform->addHelpButton('answeroptions[0]', 'answervar', 'qtype_geogebra');
@@ -233,7 +250,8 @@ class qtype_geogebra_edit_form extends question_edit_form {
      * @param array $errors Reference to the errors array.
      */
     private function check_is_applet_present(array $data, array &$errors): void {
-        if (empty($data['ggbparameters'])
+        if (
+            empty($data['ggbparameters'])
             || empty($data['ggbviews'])
             || empty($data['ggbcodebaseversion'])
             || empty($data['ggbxml'])
@@ -318,10 +336,12 @@ class qtype_geogebra_edit_form extends question_edit_form {
 
         // Check if all vars in constraints are part of randomized vars.
         foreach ($inequalitystrings as $inequalitystring) {
-            if (!\qtype_geogebra\question_helper::is_valid_inequality_for_randomizedvars(
-                $inequalitystring,
-                $data['randomizedvar'] ?? ''
-            )) {
+            if (
+                !\qtype_geogebra\question_helper::is_valid_inequality_for_randomizedvars(
+                    $inequalitystring,
+                    $data['randomizedvar'] ?? ''
+                )
+            ) {
                 $errors['constraints'] = ($errors['constraints'] ?? '') .
                     (isset($errors['constraints']) ? ', ' : '') .
                     get_string('invalidinequality', 'qtype_geogebra', htmlentities($inequalitystring));
@@ -333,11 +353,13 @@ class qtype_geogebra_edit_form extends question_edit_form {
 
         // Check if constraints are within the sliders min and max.
         foreach ($inequalitystrings as $inequalitystring) {
-            if (!\qtype_geogebra\question_helper::is_valid_inequality_for_slider_minmax(
-                $inequalitystring,
-                $data['randomizedvar'] ?? '',
-                $data['ggbxml'] ?? ''
-            )) {
+            if (
+                !\qtype_geogebra\question_helper::is_valid_inequality_for_slider_minmax(
+                    $inequalitystring,
+                    $data['randomizedvar'] ?? '',
+                    $data['ggbxml'] ?? ''
+                )
+            ) {
                 $errors['constraints'] = ($errors['constraints'] ?? '') .
                     (isset($errors['constraints']) ? ', ' : '') .
                     get_string('invalidinequality', 'qtype_geogebra', htmlentities($inequalitystring));
@@ -488,8 +510,13 @@ class qtype_geogebra_edit_form extends question_edit_form {
         $randomizedvars[] =& $mform->createElement('button', 'getvars', get_string('getvars', 'qtype_geogebra'));
         $randomizedvars[] =& $mform->createElement('text', 'randomizedvar', null, ['size' => '20']);
         $mform->setType('randomizedvar', PARAM_RAW);
-        $mform->addGroup($randomizedvars, 'randomizedvarsgroup', get_string('randomizedvar', 'qtype_geogebra'),
-            [' '], false);
+        $mform->addGroup(
+            $randomizedvars,
+            'randomizedvarsgroup',
+            get_string('randomizedvar', 'qtype_geogebra'),
+            [' '],
+            false
+        );
         $mform->addHelpButton('randomizedvarsgroup', 'randomizedvar', 'qtype_geogebra');
         $mform->disabledIf('randomizedvarsgroup', 'israndomized', 'neq', 1);
 
@@ -588,8 +615,12 @@ HTML;
         $mform->setType('ggbturl', PARAM_RAW_TRIMMED);
         $mform->addGroup($ggbturlinput, 'ggbturlinput', get_string('ggbturl', 'qtype_geogebra'), [' '], false);
         $mform->addHelpButton('ggbturlinput', 'ggbturl', 'qtype_geogebra');
-        $mform->addElement('checkbox', 'usefile', get_string('useafile', 'qtype_geogebra'),
-            get_string('dragndrop', 'qtype_geogebra'));
+        $mform->addElement(
+            'checkbox',
+            'usefile',
+            get_string('useafile', 'qtype_geogebra'),
+            get_string('dragndrop', 'qtype_geogebra')
+        );
         if (!empty($this->ggbparameters) && empty($this->ggbturl)) {
             $mform->setDefault('usefile', true);
         }

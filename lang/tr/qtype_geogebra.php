@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Değişkenlere kısıtlar (koşullar) ekle.';
+$string['addconstraints'] = 'Değişkenlere kısıtlar (koşullar) ekle.';
 $string['addmorevarblanks'] = '{no} ek değişken(ler) için boşluklar';
 $string['answerinvalid'] = 'Yanıtınızdaki cevap-zinciri geçersizdir. Bu olamaz.';
 $string['answermissing'] = 'Yanıtınızdaki cevap eksiktir. Muhtemelen JavaScript, Tarayıcıda çalışmıyor veya bilinmeyen bir hata oluştu.';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'Rastgele hale getirmek için Min ve Max, {$a} değişkeni
 $string['minplusstepgtmax'] = '{$a} değişkeni için; en küçük değer artı artış, en büyük değerden büyüktür, muhtemelen bunu GeoGebra dosyanızda düzeltmelisiniz.';
 $string['noappletloaded'] = 'Applet yüklenmedi! URL\'nin doğruluğunu ve bağlantıyı seçtikten veya appletı (yeniden) yükledikten sonra bir applet görüp görmediğinizi kontrol ediniz.';
 $string['nofractionsumeq1'] = 'Notların en az bir kombinasyonunun toplamı %100 olmalıdır';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'Öğrencinin GeoGebra kullanarak çözebileceği sorular';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'Bir GeoGebra sorusu ekleme';
 $string['pluginnameediting'] = 'Bir GeoGebra sorusu düzenleme';
 $string['pluginnamesummary'] = 'Hesaplanmış soruların (Quiz alındığında), soruyu göstermek ve cevabı doğrulamak için GeoGebra kullanan versiyonu.';

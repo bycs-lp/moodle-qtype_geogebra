@@ -28,9 +28,12 @@ namespace qtype_geogebra;
  * Class ggbstringsfortesting
  */
 class ggbstringsfortesting {
+    /** @var string GeoGebra views JSON for testing. */
     public static $views = '{"is3D":false,"AV":false,"SV":false,"CV":false,"EV2":false,"CP":false,"PC":false,"DA":false,"FI":false,
         "PV":false,"macro":false}';
+    /** @var string GeoGebra parameters for testing. */
     public static $pointparameters = 'asd'; // This isn't a ggbBase64 string but it's ok for testing...
+    /** @var string GeoGebra XML for the point question. */
     // phpcs:disable
     public static $pointxml = <<<EOT
 <?xml version="1.0" encoding="utf-8"?>

@@ -46,7 +46,6 @@ require_once($CFG->dirroot . '/question/type/geogebra/tests/fixtures/ggbstringsf
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class question_test extends advanced_testcase {
-
     /**
      * Data provider for is_complete_response on the auto-graded "point" question.
      *
@@ -74,6 +73,8 @@ final class question_test extends advanced_testcase {
     }
 
     /**
+     * Test is_complete_response on auto-graded point question.
+     *
      * @dataProvider complete_response_point_provider
      */
     public function test_is_complete_response_point(bool $expected, array $response): void {
@@ -102,6 +103,8 @@ final class question_test extends advanced_testcase {
     }
 
     /**
+     * Test is_complete_response on manually-graded question.
+     *
      * @dataProvider complete_response_manual_provider
      */
     public function test_is_complete_response_manual(bool $expected, array $response): void {
@@ -128,6 +131,8 @@ final class question_test extends advanced_testcase {
     }
 
     /**
+     * Test is_gradable_response on auto-graded point question.
+     *
      * @dataProvider gradable_response_point_provider
      */
     public function test_is_gradable_response_point(bool $expected, array $response): void {
@@ -148,6 +153,8 @@ final class question_test extends advanced_testcase {
     }
 
     /**
+     * Test grading of responses.
+     *
      * @dataProvider grade_response_provider
      */
     public function test_grading(int|float $expectedfraction, question_state $expectedstate, array $response): void {
@@ -168,6 +175,8 @@ final class question_test extends advanced_testcase {
     }
 
     /**
+     * Test response summarisation.
+     *
      * @dataProvider summarise_response_provider
      */
     public function test_summarise_response(string $variant, array $response, string $expected): void {
@@ -205,6 +214,8 @@ final class question_test extends advanced_testcase {
     }
 
     /**
+     * Test validation error messages.
+     *
      * @dataProvider validation_error_provider
      */
     public function test_get_validation_error(array $response, string $expectedkey): void {
@@ -230,22 +241,26 @@ final class question_test extends advanced_testcase {
     }
 
     /**
+     * Test classify_response for auto-graded question.
+     *
      * @dataProvider classify_response_provider
      */
     public function test_classify_response(string $answer, string $expectedclass, float $expectedfraction): void {
         $question = test_question_maker::make_question('geogebra', 'point');
         $classified = $question->classify_response(['answer' => $answer]);
-        $this->assertArrayHasKey($question->id, $classified);
-        $this->assertEquals($expectedclass, $classified[$question->id]->responseclass);
-        $this->assertEqualsWithDelta($expectedfraction, $classified[$question->id]->fraction, 0.0001);
+        $this->assertCount(1, $classified);
+        $response = reset($classified);
+        $this->assertEquals($expectedclass, $response->response);
+        $this->assertEqualsWithDelta($expectedfraction, $response->fraction, 0.0001);
     }
 
     public function test_classify_response_manual(): void {
         $question = test_question_maker::make_question('geogebra', 'manually');
         $classified = $question->classify_response(['answer' => '']);
-        $this->assertArrayHasKey($question->id, $classified);
-        $this->assertEquals(get_string('manuallygraded', 'qtype_geogebra'), $classified[$question->id]->responseclass);
-        $this->assertEquals(0, $classified[$question->id]->fraction);
+        $this->assertCount(1, $classified);
+        $response = reset($classified);
+        $this->assertEquals(get_string('manuallygraded', 'qtype_geogebra'), $response->response);
+        $this->assertEquals(0, $response->fraction);
     }
 
     public function test_grade_response_manual(): void {

@@ -35,7 +35,6 @@ use stdClass;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class question_helper {
-
     /** @var string Regex pattern for inequality syntax validation. */
     private const INEQUALITY_PATTERN = '/^([a-z_0-9]+)(<=|<|>=|>)([a-z_0-9]+)$/i';
 
@@ -85,9 +84,6 @@ class question_helper {
             $vars = self::get_variables_with_minmaxstep($randomizedvar, $ggbxml);
             $op = $matches[2];
             if (isset($vars[$matches[1]], $vars[$matches[3]])) {
-                $ret = self::check_inequality($op, $vars[$matches[1]]['min'], $vars[$matches[3]]['max'])
-                    || self::check_inequality($op, $vars[$matches[1]]['max'], $vars[$matches[3]]['min']);
-                // Refine: check the actual semantics.
                 $ret = match ($op) {
                     '<' => $vars[$matches[1]]['min'] < $vars[$matches[3]]['max'],
                     '<=' => $vars[$matches[1]]['min'] <= $vars[$matches[3]]['max'],
@@ -109,8 +105,14 @@ class question_helper {
      */
     public static function get_variables_with_minmaxstep(string $randomizedvar, string $ggbxml): array {
         $vars = array_filter(array_map('trim', explode(',', $randomizedvar)));
+        if (empty($vars)) {
+            return [];
+        }
         $varswithminmaxstep = [];
+        $previousinternalerrors = libxml_use_internal_errors(true);
         $xml = simplexml_load_string($ggbxml);
+        libxml_clear_errors();
+        libxml_use_internal_errors($previousinternalerrors);
         if ($xml === false) {
             return [];
         }
@@ -202,7 +204,7 @@ class question_helper {
      * @return int|float Random number in the set {x | $min <= x <= $max, x = $min + n * $increment, n in N}.
      */
     public static function random_incremented_value(int|float $min, int|float $max, int|float $increment): int|float {
-        if ($increment <= 0) {
+        if ($increment <= 0 || $max <= $min) {
             return $min;
         }
         return $min + mt_rand(0, (int) (($max - $min) / $increment)) * $increment;

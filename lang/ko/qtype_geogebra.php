@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = '변수에 대한 제한요소(조건)을 추가하세요.';
+$string['addconstraints'] = '변수에 대한 제한요소(조건)을 추가하세요.';
 $string['addmorevarblanks'] = '더 많은 {no} 변수를 위한 공백';
 $string['answerinvalid'] = '응답에서 답변-스트링이 적절하지 않습니다. 이는 발생하지 않아야 합니다.';
 $string['answermissing'] = '응답에서 답변이 사라졌습니다. 아마도 자바스크립트를 브라우저에서 사용할 수 없거나 알 수 없는 오류가 발생하였습니다.';
@@ -55,7 +54,9 @@ $string['mineqmax'] = '랜덤화를 위한 최솟값과 최댓값은 {$a}에 대
 $string['minplusstepgtmax'] = '변수 {$a}를 위한 최댓값보다 최솟값과 증가량의 합이 크므로, 지오지브라 파일에서 이를 수정해야 합니다.';
 $string['noappletloaded'] = '불러온 애플릿이 없습니다! URL이 올바른지와 링크를 선택하고 애플릿을 (다시) 불러오기를 선택한 후 애플릿을 보았는지 확인하십시오.';
 $string['nofractionsumeq1'] = '최소한 점수의 한 조합은 합이 100%가 되어야 합니다.';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = '지오지브라를 사용하여 학생이 질문을 해결할 수 있는 질문들';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = '지오지브라 질문 추가';
 $string['pluginnameediting'] = '지오지브라 질문 수정';
 $string['pluginnamesummary'] = '질문을 보여주고 퀴즈가 이루어졌을 때 답을 확인하기 위한 지오지브라를 사용한 계산된 질문의 버전';
