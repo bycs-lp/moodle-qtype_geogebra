@@ -26,9 +26,10 @@
 defined('MOODLE_INTERNAL') || die;
 
 if ($hassiteconfig) {
-
-    $ADMIN->add('qtypesettings', new admin_category('qtype_geogebra_settings',
-        new lang_string('pluginname', 'qtype_geogebra')));
+    $ADMIN->add('qtypesettings', new admin_category(
+        'qtype_geogebra_settings',
+        new lang_string('pluginname', 'qtype_geogebra')
+    ));
 
     if ($ADMIN->fulltree) {
         $settings->add(new admin_setting_configtext(

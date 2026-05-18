@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'הוסיפי אילוצים (תנאים) למשתנים.';
+$string['addconstraints'] = 'הוסיפי אילוצים (תנאים) למשתנים.';
 $string['addmorevarblanks'] = 'מקומות פנויים לעוד {no} משתנה/ים';
 $string['answerinvalid'] = 'מחרוזת התשובה בתגובה אינה חוקית. זה לא צריך לקרות.';
 $string['answermissing'] = 'התשובה בתגובה חסרה. כנאה JavaScript לא מופעל בדפדפן או שקרתה שגיאה לא ידועה.';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'תכונות Min ו-Max להגרלה אינן מצוינ�
 $string['minplusstepgtmax'] = 'סכום המינימום והצעד גדול מהמקסימום עבור משתנה {$a}‏. כנראה שעליך לתקן את קובץ הגאוגברה שלך.';
 $string['noappletloaded'] = 'אף יישומון לא נטען! בדקי אם כתובת הרשת נכונה, ואם את רואה יישומון לאחר בחירת קישור או העלאה מחדש של היישומון.';
 $string['nofractionsumeq1'] = 'לפחות צרוף אחד של הציונים צריך להסכם ל-100%‎‏';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'שאלות כאשר התלמיד יכול לפתור את השאלות בעזרת גאוגברה';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'הוספת שאלת גאוגברה';
 $string['pluginnameediting'] = 'עריכת שאלת גאוגברה';
 $string['pluginnamesummary'] = 'גירסה של שאלות מחושבות המשתמשת בגאוגברה להראות את השאלה ולאמת את התשובה כאשר התלמיד עובד על החידון.';

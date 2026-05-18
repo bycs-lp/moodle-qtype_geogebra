@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Lägg till begränsningar (bivillkor) till variabler.';
+$string['addconstraints'] = 'Lägg till begränsningar (bivillkor) till variabler.';
 $string['addmorevarblanks'] = 'Mallar för {no} fler variabler';
 $string['answerinvalid'] = 'Svarstexten i svaret är ogiltig. Det här borde inte hända - och ändå har det gjort det!';
 $string['answermissing'] = 'Svarstexten är tom. Troligen är JavaScript inte aktiverat i webbläsaren eller så har ett okänt fel inträffat';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'Min- och Max-värdena för slumpningen är inte korrekt s
 $string['minplusstepgtmax'] = 'Minsta värdet + steglängden är större än största värdet för variabel {$a}. Du måste antagligen korrigera detta i din GeoGebrafil.';
 $string['noappletloaded'] = 'Ingen applet har laddats. Kontrollera om adressen är korrekt och om du ser en applet efter att du valt en länkadress eller laddat (om) denna applet';
 $string['nofractionsumeq1'] = 'Minst en kombination av poäng måste summeras till 100%';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'Frågor där eleverna kan lösa frågan med GeoGebra';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'Lägg till en GeoGebrafråga';
 $string['pluginnameediting'] = 'Redigera en GeoGebrafråga';
 $string['pluginnamesummary'] = 'En version av en beräknad fråga som använder GeoGebra för att visa frågan och verfiera svaret när testet tas.';

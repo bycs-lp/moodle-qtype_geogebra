@@ -17,23 +17,24 @@
 /**
  * Version information for GeoGebra question type.
  *
- * @package        qtype_geogebra
- * @author         Christoph Stadlbauer <christoph.stadlbauer@geogebra.org>
+ * @package    qtype_geogebra
+ * @author     Christoph Stadlbauer <christoph.stadlbauer@geogebra.org>
  * @copyright  (c) International GeoGebra Institute 2014
- * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'qtype_geogebra';
-$plugin->version = 2023040400;
-$plugin->release = '1.13.4';
+$plugin->version = 2026051400;
+$plugin->release = '2.0.0';
 
-$plugin->requires = 2018051702;
-$plugin->dependencies = array(
-        'qtype_numerical'  => 2014051200,
-        'qtype_calculated' => 2014051200,
-        'qtype_shortanswer' => 2018051400
-);
+$plugin->requires = 2024100700; // Moodle 4.5.
+$plugin->supported = [405, 502];
+$plugin->dependencies = [
+    'qtype_numerical'  => 2024100700,
+    'qtype_calculated' => 2024100700,
+    'qtype_shortanswer' => 2024100700,
+];
 
 $plugin->maturity = MATURITY_STABLE;

@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Προσθήκη περιορισμών (συνθηκών) στις μεταβλητές.';
+$string['addconstraints'] = 'Προσθήκη περιορισμών (συνθηκών) στις μεταβλητές.';
 $string['addmorevarblanks'] = 'Κενά για {no} περισσότερες μεταβλητές';
 $string['answerinvalid'] = 'Η απάντηση-συμβολοσειρά δεν είναι έγκυρη. Αυτό δεν μπορεί να συμβαίνει.';
 $string['answermissing'] = 'Η απάντηση λείπει. Πιθανώς η JavaScript δεν είναι ενεργοποιημένη ή συνέβη κάποιο άγνωστο λάθος στο φυλλομετρητή';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'To Ελάχιστο και το Μέγιστο για τ�
 $string['minplusstepgtmax'] = 'Αν στο Ελάχιστο προσθέσετε κάτι , γίνεται μεγαλύτερο από το Μέγιστο για την μεταβλητή {$ 5}, διορθώστε το στο αρχείο σας του GeoGebra.';
 $string['noappletloaded'] = 'Δεν φορτώθηκε καμμιά εφαρμογή! Ελέγξτε αν το URL είναι σωστό και αν δείτε μια εφαρμογή μετά τη επιλογή του δεσμού ή  (ξανα) φόρτωση της εφαρμογής';
 $string['nofractionsumeq1'] = 'Τουλάχιστον ένας συνδυασμός των βαθμών πρέπει να έχει άθροισμα 100%';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'Ερωτήσεις όπου ο μαθητής μπορεί να λύσει το πρόβλημα με τη χρήση του GeoGebra';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'Προσθήκη μιας ερώτησης στο GeoGebra';
 $string['pluginnameediting'] = 'Επεξεργασία μια ερώτηση στο GeoGebra';
 $string['pluginnamesummary'] = 'Μια έκδοση του υπολογίζεται ερωτήσεις που χρησιμοποιεί το GeoGebra για να δείξει την ερώτηση και την επαλήθευση της απάντησης όταν το κουίζ πραγματοποιηθεί.';

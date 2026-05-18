@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Aggiungi vincoli (condizioni) alle variabili.';
+$string['addconstraints'] = 'Aggiungi vincoli (condizioni) alle variabili.';
 $string['addmorevarblanks'] = 'Spazi vuoti per {no} ulteriore/i variabile/i';
 $string['answerinvalid'] = 'La stringa della risposta non è valida. Ciò non dovrebbe accadere.';
 $string['answermissing'] = 'Risposta mancante. Probabilmente JavaScript non è attivato nel browser o si è verificato un errore sconosciuto.';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'I valori di Min e Max per non sono stati specificati corr
 $string['minplusstepgtmax'] = 'La somma di Min e dell\'Incremento è maggiore di Max per la variabile {$a}: potrebbe essere necessario dovere correggere questa situazione nel file di GeoGebra.';
 $string['noappletloaded'] = 'Non è stata caricata alcuna applet. Verificare la correttezza dell\'URL e se viene visualizzata un applet dopo avere selezionato un collegamento o dopo avere (ri)caricato l\'applet';
 $string['nofractionsumeq1'] = 'Almeno una combinazione di voti deve totalizzare il 100%';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'Domande la cui soluzione può essere svolta con GeoGebra';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'Aggiungi una domanda GeoGebra';
 $string['pluginnameediting'] = 'Modifica una domanda GeoGebra';
 $string['pluginnamesummary'] = 'Una versione delle domande calcolate che utilizza GeoGebra per visualizzare la domanda e verificare la risposta durante il quiz.';

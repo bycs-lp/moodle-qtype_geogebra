@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Añadir restricciones (condiciones) a las variables.';
+$string['addconstraints'] = 'Añadir restricciones (condiciones) a las variables.';
 $string['addmorevarblanks'] = 'Espacios para {no} más variable(s)';
 $string['answerinvalid'] = 'La cadena de caracteres de la respuesta no es válida. Esto no debiera ocurrir.';
 $string['answermissing'] = 'No hay resultados. Probablemente JavaScript no se encuentra activado en tu navegador (o ha ocurrido otro error desconocido).';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'No están indicados correctamente el mínimo y el máximo
 $string['minplusstepgtmax'] = 'El mínimo más el incremento es mayor que el máximo para la variable {$a}; probablemente necesitarás corregir esto en tu archivo GeoGebra.';
 $string['noappletloaded'] = '¡No se ha cargado ninguna applet! Comprueba si la URL es correcta y si ves un applet después de elegir un enlace o (re)cargar el applet';
 $string['nofractionsumeq1'] = 'Al menos una combinación de notas debe sumar 100';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'Preguntas que el estudiante puede resolver usando GeoGebra';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'Añadir una pregunta de GeoGebra';
 $string['pluginnameediting'] = 'Editar una pregunta de GeoGebra';
 $string['pluginnamesummary'] = 'Una versión de las preguntas calculadas que usa GeoGebra para mostrar la pregunta y comprobar la respuesta cuando se realiza el cuestionario.';

@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Gehitu murrizketak (baldintzak) aldagaiei.';
+$string['addconstraints'] = 'Gehitu murrizketak (baldintzak) aldagaiei.';
 $string['addmorevarblanks'] = '{no} hutsune aldagai gehiagoretzat';
 $string['answerinvalid'] = 'Erantzunaren karaktere-zerrenda ez da onargarria. Honelakorik ez litzateke gertatu behar.';
 $string['answermissing'] = 'Ez da erantzunik jaso. Beharbada Javascript desgaitua dago zure nabigatzailean edo bestelako errore ezezagunen bat gertatu da.';
@@ -55,7 +54,9 @@ $string['mineqmax'] = '{$a} aldagaia zorizko bihurtzeko, ez dira bere min eta ma
 $string['minplusstepgtmax'] = 'Minimoa gehi gehikuntza {$a} aldagaiaren balio maximoa baino handiagoa da; zure Geobebra-artxiboan zuzendu beharko duzu segur aski.';
 $string['noappletloaded'] = 'Ez da appletik kargatu! Egiaztatu URLa zuzena dela eta appletik ikusten ote duzun esteka aukeratu edota appleta (bir)kargatu ostean';
 $string['nofractionsumeq1'] = 'Nota-sortaren baten batura gutxienez 100% izan behar da';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'GeoGebra erabiliz ikasleek erantzun ditzaketen galderak';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'Gehitu GeoGebra-galdera';
 $string['pluginnameediting'] = 'Editatu GeoGebra-galdera';
 $string['pluginnamesummary'] = 'Galdetegia betetzerakoan galderak erakusteko eta egiaztatzeko GeoGebrak erabiltzen duen kalkulatutako erantzunen bertsioa.';

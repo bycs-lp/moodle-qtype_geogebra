@@ -17,214 +17,171 @@
 /**
  * GeoGebra question renderer class.
  *
- * @package        qtype_geogebra
- * @author         Christoph Stadlbauer <christoph.stadlbauer@geogebra.org>
+ * @package    qtype_geogebra
+ * @author     Christoph Stadlbauer <christoph.stadlbauer@geogebra.org>
  * @copyright  (c) International GeoGebra Institute 2014
- * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
  * Generates the output for geogebra questions.
+ *
+ * @package    qtype_geogebra
+ * @copyright  (c) International GeoGebra Institute 2014
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class qtype_geogebra_renderer extends qtype_renderer {
-
     /**
-     * Generate the display of the formulation part of the question. This is the
-     * area that contains the question text, and the controls for students to
-     * input their answers.
+     * Generate the display of the formulation part of the question.
      *
-     * We store base64 string and the answer string (in the form of zeros and ones) in a hidden field and load the applet and
-     * some javascript used to update the hidden fields.
-     *
-     * @param question_attempt $qa the question attempt to display.
-     * @param question_display_options $options controls what should and should not be displayed.
+     * @param question_attempt $qa The question attempt to display.
+     * @param question_display_options $options Controls what should and should not be displayed.
      * @return string HTML fragment.
      */
-    public function formulation_and_controls(question_attempt $qa, question_display_options $options) {
-
-        $scalingcontainerclass = $qa->get_qt_field_name('scalingcontainer');
-        $result = html_writer::start_div($scalingcontainerclass);
-
-        /* @var $question qtype_geogebra_question the question object */
+    public function formulation_and_controls(question_attempt $qa, question_display_options $options): string {
+        /** @var qtype_geogebra_question $question */
         $question = $qa->get_question();
 
-        $b64current = $qa->get_last_qt_var('ggbbase64');
+        $scalingcontainerclass = $qa->get_qt_field_name('scalingcontainer');
         $b64inputname = $qa->get_qt_field_name('ggbbase64');
-
-        $b64inputattributes = array(
-            'type' => 'hidden',
-            'name' => $b64inputname,
-            'value' => $b64current,
-            'id' => $b64inputname,
-            'size' => 80,
-        );
-
-        $result .= html_writer::empty_tag('input', $b64inputattributes);
-
-        $xmlcurrent = $qa->get_last_qt_var('ggbxml');
         $xmlinputname = $qa->get_qt_field_name('ggbxml');
-
-        $xmlinputattributes = array(
-            'type' => 'hidden',
-            'name' => $xmlinputname,
-            'value' => $xmlcurrent,
-            'id' => $xmlinputname,
-            'size' => 80,
-        );
-
-        $result .= html_writer::empty_tag('input', $xmlinputattributes);
-
-        $answercurrent = $qa->get_last_qt_var('answer');
         $answerinputname = $qa->get_qt_field_name('answer');
-
-        $answerinputattributes = array(
-            'type' => 'hidden',
-            'name' => $answerinputname,
-            'value' => $answercurrent,
-            'id' => $answerinputname,
-            'size' => 80,
-        );
-
-        $result .= html_writer::empty_tag('input', $answerinputattributes);
-
-        $exercisecurrent = $qa->get_last_qt_var('exerciseresult');
         $exerciseinputname = $qa->get_qt_field_name('exerciseresult');
-
-        $exerciseinputattributes = array(
-            'type' => 'hidden',
-            'name' => $exerciseinputname,
-            'value' => $exercisecurrent,
-            'id' => $exerciseinputname,
-            'size' => 80,
-        );
-
-        $result .= html_writer::empty_tag('input', $exerciseinputattributes);
-        $questiontext = $question->format_questiontext($qa);
-
-        $result .= html_writer::tag('div', $questiontext, ['class' => 'qtext']);
-
         $ggbdivname = $qa->get_qt_field_name('ggbdiv');
-        $result .= html_writer::div('', '', array('id' => $ggbdivname));
+        $appletparametersid = $qa->get_qt_field_name('applet_parameters');
 
-        $responsevars = array();
+        $responsevars = [];
         if (!empty($question->answers)) {
             foreach ($question->answers as $answer) {
                 $responsevars[] = $answer->answer;
             }
         }
 
-        $options = array('parameters' => $question->ggbparameters,
-            'views' => $question->ggbviews,
-            'codebase' => $question->ggbcodebaseversion,
-            'html5NoWebSimple' => true,
-            'div' => $ggbdivname,
-            'vars' => $question->currentvals,
-            'b64input' => $b64inputname,
-            'xmlinput' => $xmlinputname,
-            'answerinput' => $answerinputname,
-            'exerciseresultinput' => $exerciseinputname,
-            'responsevars' => $responsevars,
-            'slot' => $qa->get_slot(),
-            'lang' => current_language()
-        );
-        $lang = current_language();
-        $currentvals = json_encode($question->currentvals);
-        $responsevarsjson = json_encode($responsevars);
-        $slot = $qa->get_slot();
-        $appletparametersid = $qa->get_qt_field_name('applet_parameters');
-        $forcedimensions = $question->forcedimensions ?: 0;
-        $width = $question->width ?: 0;
-        $height = $question->height ?: 0;
         $configuredcodebase = get_config('qtype_geogebra', 'codebase');
-        $codebase = !empty($configuredcodebase) ? $configuredcodebase : '""';
-        $applet = <<<EOD
-<article id=$appletparametersid
-  data-parameters=$question->ggbparameters
-  data-views=$question->ggbviews
-  data-codebase=$codebase
-  data-html5NoWebSimple=true
-  data-div=$ggbdivname
-  data-vars=$currentvals
-  data-b64input=$b64inputname
-  data-xmlinput=$xmlinputname
-  data-answerinput=$answerinputname
-  data-exerciseresultinput=$exerciseinputname
-  data-responsevars=$responsevarsjson
-  data-slot=$slot
-  data-lang=$lang
-  data-forcedimensions=$forcedimensions
-  data-width=$width
-  data-height=$height
-  data-scalingcontainerclass=$scalingcontainerclass
-</article>
-EOD;
-        $result .= $applet;
-        $this->page->requires->js_call_amd('qtype_geogebra/ggbq', 'init', array($appletparametersid));
+        $codebase = !empty($configuredcodebase) ? $configuredcodebase : '';
 
+        $validationerror = '';
         if ($qa->get_state() == question_state::$invalid) {
-            $result .= html_writer::nonempty_tag('div',
-                $question->get_validation_error(array('answer' => $answercurrent,
-                    'ggbxml' => $xmlcurrent,
-                    'ggbbase64' => $b64current,
-                    'exerciseresult' => $exercisecurrent)),
-                array('class' => 'validationerror'));
+            $validationerror = $question->get_validation_error([
+                'answer' => $qa->get_last_qt_var('answer') ?? '',
+                'ggbxml' => $qa->get_last_qt_var('ggbxml') ?? '',
+                'ggbbase64' => $qa->get_last_qt_var('ggbbase64') ?? '',
+                'exerciseresult' => $qa->get_last_qt_var('exerciseresult') ?? '',
+            ]);
         }
 
-        $result .= html_writer::end_div();
-        return $result;
+        $templatecontext = [
+            'scalingcontainerclass' => $scalingcontainerclass,
+            'b64inputname' => $b64inputname,
+            'b64current' => $qa->get_last_qt_var('ggbbase64') ?? '',
+            'xmlinputname' => $xmlinputname,
+            'xmlcurrent' => $qa->get_last_qt_var('ggbxml') ?? '',
+            'answerinputname' => $answerinputname,
+            'answercurrent' => $qa->get_last_qt_var('answer') ?? '',
+            'exerciseinputname' => $exerciseinputname,
+            'exercisecurrent' => $qa->get_last_qt_var('exerciseresult') ?? '',
+            'questiontext' => $question->format_questiontext($qa),
+            'ggbdivname' => $ggbdivname,
+            'appletparametersid' => $appletparametersid,
+            'ggbparameters' => $question->ggbparameters ?? '',
+            'ggbviews' => $question->ggbviews ?? '',
+            'codebase' => $codebase,
+            'currentvals' => json_encode($question->currentvals),
+            'responsevars' => json_encode($responsevars),
+            'slot' => $qa->get_slot(),
+            'lang' => current_language(),
+            'forcedimensions' => $question->forcedimensions ? 1 : 0,
+            'width' => $question->width ?? 0,
+            'height' => $question->height ?? 0,
+            'haserror' => !empty($validationerror),
+            'validationerror' => $validationerror,
+        ];
+
+        $this->page->requires->js_call_amd('qtype_geogebra/ggbq', 'init', [$appletparametersid]);
+
+        return $this->output->render_from_template('qtype_geogebra/formulation', $templatecontext);
     }
 
     /**
-     * Generate the specific feedback. This is feedback that varies according to
-     * the response the student gave.
+     * Generate the specific feedback.
      *
-     * We just concatenate all the feedbacks that match the answerstring.
-     *
-     * @param question_attempt $qa the question attempt to display.
+     * @param question_attempt $qa The question attempt to display.
      * @return string HTML fragment.
      */
-    public function specific_feedback(question_attempt $qa) {
-        /* @var $question qtype_geogebra_question the question object */
+    public function specific_feedback(question_attempt $qa): string {
+        /** @var qtype_geogebra_question $question */
         $question = $qa->get_question();
         $feedback = '';
-        if (!$qa->get_state()->is_gave_up()) {
-            $itemid = 0;
-            if ($question->isexercise) {
-                $exerciseresult = json_decode($qa->get_last_qt_var('exerciseresult'));
-                $singlecorrectignoreothers = false;
-                foreach ($exerciseresult as $assignment) {
-                    if (0.999 < $assignment->fraction) {
-                        $singlecorrectignoreothers = true;
-                        if ($assignment->hint) {
-                            if ($feedback) {
-                                $feedback .= "<br>";
-                            };
-                            $feedback .= $question->format_text($assignment->hint, FORMAT_HTML,
-                                $qa, 'question', 'answerfeedback', $itemid++);
+
+        if ($qa->get_state()->is_gave_up()) {
+            return '';
+        }
+
+        $itemid = 0;
+        if ($question->isexercise) {
+            $exerciseresultraw = $qa->get_last_qt_var('exerciseresult');
+            if (empty($exerciseresultraw)) {
+                return '';
+            }
+            $exerciseresult = json_decode($exerciseresultraw);
+            if ($exerciseresult === null) {
+                return '';
+            }
+
+            $singlecorrectignoreothers = false;
+            foreach ($exerciseresult as $assignment) {
+                if (is_object($assignment) && isset($assignment->fraction) && $assignment->fraction > 0.999) {
+                    $singlecorrectignoreothers = true;
+                    if (!empty($assignment->hint)) {
+                        if ($feedback !== '') {
+                            $feedback .= '<br>';
                         }
+                        $feedback .= $question->format_text(
+                            $assignment->hint,
+                            FORMAT_HTML,
+                            $qa,
+                            'question',
+                            'answerfeedback',
+                            $itemid++
+                        );
                     }
                 }
-                foreach ($exerciseresult as $assignment) {
-                    if (!$singlecorrectignoreothers || $assignment->fraction < 0) {
-                        if ($assignment->hint) {
-                            if ($feedback) {
-                                $feedback .= "<br>";
-                            };
-                            $feedback .= $question->format_text($assignment->hint, FORMAT_HTML,
-                                $qa, 'question', 'answerfeedback', $itemid++);
+            }
+            foreach ($exerciseresult as $assignment) {
+                if (!is_object($assignment) || !isset($assignment->fraction)) {
+                    continue;
+                }
+                if (!$singlecorrectignoreothers || $assignment->fraction < 0) {
+                    if (!empty($assignment->hint)) {
+                        if ($feedback !== '') {
+                            $feedback .= '<br>';
                         }
+                        $feedback .= $question->format_text(
+                            $assignment->hint,
+                            FORMAT_HTML,
+                            $qa,
+                            'question',
+                            'answerfeedback',
+                            $itemid++
+                        );
                     }
                 }
-            } else {
-                $response = $qa->get_last_qt_var('answer');
-                $i = 0;
-                foreach ($question->answers as $answer) {
-                    if ((bool)substr($response, $i, 1)) {
-                        $feedback .= $question->format_text($answer->feedback, $answer->feedbackformat,
-                            $qa, 'question', 'answerfeedback', $answer->id);
-                    }
-                    $i++;
+            }
+        } else {
+            $response = $qa->get_last_qt_var('answer') ?? '';
+            $i = 0;
+            foreach ($question->answers as $answer) {
+                if ((bool) substr($response, $i, 1)) {
+                    $feedback .= $question->format_text(
+                        $answer->feedback,
+                        $answer->feedbackformat,
+                        $qa,
+                        'question',
+                        'answerfeedback',
+                        $answer->id
+                    );
                 }
+                $i++;
             }
         }
         return $feedback;

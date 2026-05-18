@@ -1,0 +1,111 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template qtype_geogebra/formulation
+
+    Template for the formulation and controls part of a GeoGebra question.
+
+    Context variables required for this template:
+    * scalingcontainerclass - CSS class for the scaling container
+    * b64inputname - Name/id for the base64 hidden input
+    * b64current - Current base64 value
+    * xmlinputname - Name/id for the xml hidden input
+    * xmlcurrent - Current xml value
+    * answerinputname - Name/id for the answer hidden input
+    * answercurrent - Current answer value
+    * exerciseinputname - Name/id for the exercise result hidden input
+    * exercisecurrent - Current exercise result value
+    * questiontext - Formatted question text
+    * ggbdivname - ID for the GeoGebra applet div
+    * appletparametersid - ID for the applet parameters article
+    * ggbparameters - GeoGebra parameters JSON
+    * ggbviews - GeoGebra views configuration
+    * codebase - GeoGebra codebase URL
+    * currentvals - JSON encoded current variable values
+    * responsevars - JSON encoded response variables
+    * slot - Question slot number
+    * lang - Current language
+    * forcedimensions - Whether dimensions are forced (0/1)
+    * width - Forced width
+    * height - Forced height
+    * haserror - Whether there is a validation error
+    * validationerror - The validation error message
+
+    Example context (json):
+    {
+        "scalingcontainerclass": "q1:1_scalingcontainer",
+        "b64inputname": "q1:1_ggbbase64",
+        "b64current": "",
+        "xmlinputname": "q1:1_ggbxml",
+        "xmlcurrent": "",
+        "answerinputname": "q1:1_answer",
+        "answercurrent": "",
+        "exerciseinputname": "q1:1_exerciseresult",
+        "exercisecurrent": "",
+        "questiontext": "<p>Drag the point to (3/4)</p>",
+        "ggbdivname": "q1:1_ggbdiv",
+        "appletparametersid": "q1:1_applet_parameters",
+        "ggbparameters": "{}",
+        "ggbviews": "{}",
+        "codebase": "",
+        "currentvals": "{}",
+        "responsevars": "[]",
+        "slot": "1",
+        "lang": "en",
+        "forcedimensions": 0,
+        "width": 0,
+        "height": 0,
+        "haserror": false,
+        "validationerror": ""
+    }
+}}
+<div class="{{scalingcontainerclass}}">
+    <input type="hidden" name="{{b64inputname}}" id="{{b64inputname}}" value="{{b64current}}">
+    <input type="hidden" name="{{xmlinputname}}" id="{{xmlinputname}}" value="{{xmlcurrent}}">
+    <input type="hidden" name="{{answerinputname}}" id="{{answerinputname}}" value="{{answercurrent}}">
+    <input type="hidden" name="{{exerciseinputname}}" id="{{exerciseinputname}}" value="{{exercisecurrent}}">
+
+    <div class="qtext">{{{questiontext}}}</div>
+
+    <div id="{{ggbdivname}}"></div>
+
+    <article id="{{appletparametersid}}"
+             data-parameters="{{ggbparameters}}"
+             data-views="{{ggbviews}}"
+             data-codebase="{{codebase}}"
+             data-html5nowebsimple="true"
+             data-div="{{ggbdivname}}"
+             data-vars="{{currentvals}}"
+             data-b64input="{{b64inputname}}"
+             data-xmlinput="{{xmlinputname}}"
+             data-answerinput="{{answerinputname}}"
+             data-exerciseresultinput="{{exerciseinputname}}"
+             data-responsevars="{{responsevars}}"
+             data-slot="{{slot}}"
+             data-lang="{{lang}}"
+             data-forcedimensions="{{forcedimensions}}"
+             data-width="{{width}}"
+             data-height="{{height}}"
+             data-scalingcontainerclass="{{scalingcontainerclass}}">
+    </article>
+
+    {{#haserror}}
+        <div class="validationerror">
+            {{validationerror}}
+        </div>
+    {{/haserror}}
+</div>

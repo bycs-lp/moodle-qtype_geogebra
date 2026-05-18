@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Voeg beperkingen (voorwaarden) toe aan variabelen.';
+$string['addconstraints'] = 'Voeg beperkingen (voorwaarden) toe aan variabelen.';
 $string['addmorevarblanks'] = 'Blanco\'s voor {no} meer variabele(n)';
 $string['answerinvalid'] = 'De antwoord-string in de reactie is ongeldig.';
 $string['answermissing'] = 'Het antwoord in je reactie ontbreekt. Ofwel is Javascript niet ingeschakeld in je Browser, ofwel deed er zich een onbekende fout voor.';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'Min and Max voor de random bepaling werden niet correct b
 $string['minplusstepgtmax'] = 'Min plus toename is groter dan Max voor variable {$a}. Waarschijnlijk moet je dit aanpassen in je GeoGebra bestand.';
 $string['noappletloaded'] = 'Er werd geen applet ingeladen! Controleer of de URL correct is of je een applet ziet verschijnen na het kiezen van een link of na (her)laden van het applet';
 $string['nofractionsumeq1'] = 'Minstens een van de combinaties moet een totaal opleveren van 100%';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'Vragen die de student kan oplossen met GeoGebra';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'Voeg GeoGebra vraag toe';
 $string['pluginnameediting'] = 'Bewerken van een vraag in GeoGebra';
 $string['pluginnamesummary'] = 'Een versie met rekenvragen waarbij GeoGebra gebruikt wordt om de vragen te tonen en de antwoorden te controleren wanneer je de quiz start.';

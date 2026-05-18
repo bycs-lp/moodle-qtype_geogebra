@@ -1,18 +1,14 @@
 /**
- * Javascript Controller to embed GGBApplet
+ * Javascript Controller to embed GGBApplet.
  *
  * STUDENT VIEW
  *
- * This class provides all the functionality for the new assign module.
- *
- * @author         Christoph Stadlbauer <christoph.stadlbauer@geogebra.org>
+ * @module     qtype_geogebra/ggbq
+ * @author     Christoph Stadlbauer <christoph.stadlbauer@geogebra.org>
  * @copyright  (c) International GeoGebra Institute 2018
- * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-define(['jquery', 'https://www.geogebra.org/apps/deployggb.js'], function ($, GGBApplet) {
-    /**
-     * Created by Christoph on 25.08.19.
-     */
+define(['jquery', 'https://www.geogebra.org/apps/deployggb.js'], function($, GGBApplet) {
 
     const scalingContainers = {};
     let resizeTimeout;
@@ -23,15 +19,15 @@ define(['jquery', 'https://www.geogebra.org/apps/deployggb.js'], function ($, GG
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(
             () => Object.values(scalingContainers).forEach((containerClass) => {
-                    // We need to use getElementsByClassName because colons are not allowed for jquery and Vanilla JS querySelector.
-                    const scalingContainer = document.getElementsByClassName(containerClass)[0];
-                    // We retrieve the formulation div container, because this gives us the correct width to adapt
-                    // the scaling container to.
-                    const formulationDivStyle = window.getComputedStyle(
-                        scalingContainer.querySelector('.qtext').parentElement.parentElement);
-                    scalingContainer.style.width = parseInt(formulationDivStyle.width)
-                        - parseInt(formulationDivStyle.paddingLeft) - parseInt(formulationDivStyle.paddingRight) + 'px';
-                }), 250);
+                // We need to use getElementsByClassName because colons are not allowed for jquery and Vanilla JS querySelector.
+                const scalingContainer = document.getElementsByClassName(containerClass)[0];
+                // We retrieve the formulation div container, because this gives us the correct width to adapt
+                // the scaling container to.
+                const formulationDivStyle = window.getComputedStyle(
+                    scalingContainer.querySelector('.qtext').parentElement.parentElement);
+                scalingContainer.style.width = parseInt(formulationDivStyle.width)
+                    - parseInt(formulationDivStyle.paddingLeft) - parseInt(formulationDivStyle.paddingRight) + 'px';
+            }), 250);
     };
 
     return {
@@ -44,18 +40,16 @@ define(['jquery', 'https://www.geogebra.org/apps/deployggb.js'], function ($, GG
         responsevars: [],
         exerciseresultinput: [],
         qdiv: [],
-        //parameters: {},
         ggbDataset: [],
-        //applet1,
 
-        init: function (appletParametersID) {
+        init: function(appletParametersID) {
             window.GGBQ = this;
             var ggbDataset = document.getElementById(appletParametersID).dataset;
             var slot = ggbDataset.slot;
             // Add current scaling container to the object store for being able to access it later on.
             scalingContainers[slot] = ggbDataset.scalingcontainerclass;
 
-            window.ggbAppletOnLoad = function (ggbAppletId) {
+            window.ggbAppletOnLoad = function(ggbAppletId) {
                 if (ggbAppletId != -1) {
                     document.querySelector('article').onkeydown = this.checkEnter;
                     var id = ggbAppletId.substring(9);
@@ -65,7 +59,7 @@ define(['jquery', 'https://www.geogebra.org/apps/deployggb.js'], function ($, GG
                         ggbApplet.setValue(label, curvals[label]);
                     }
 
-                    // Set the initial size of the scaling containers so GeoGebra applet scale a first time correctly after loading.
+                    // Set the initial size of the scaling containers so GeoGebra applet scale correctly after loading.
                     resizeScalingContainer();
                     // Unregister old event listeners in case we have multiple GeoGebra questions on one page.
                     // We only need one for the whole page.
@@ -78,7 +72,7 @@ define(['jquery', 'https://www.geogebra.org/apps/deployggb.js'], function ($, GG
                     window.GGBQ.qdiv[id].style.visibility = 'visible';
                     if (window.GGBQ.answerinput[id].val() == '') {
                         var responsestring = '';
-                        window.GGBQ.responsevars[id].forEach(function (responsevar) {
+                        window.GGBQ.responsevars[id].forEach(function(responsevar) {
                             if (ggbApplet.isDefined(responsevar)) {
                                 responsestring += ggbApplet.getValue(responsevar);
                             } else {
@@ -90,7 +84,7 @@ define(['jquery', 'https://www.geogebra.org/apps/deployggb.js'], function ($, GG
                 }
             };
 
-            // jquery doesn't handle the colon : but later we expect a jquery optject, so ...
+            // The jQuery does not handle the colon but later we expect a jquery object.
             this.b64input[slot] = $(document.getElementById(ggbDataset.b64input));
             this.ggbBase64[slot] = this.b64input[slot].val();
 
@@ -116,13 +110,12 @@ define(['jquery', 'https://www.geogebra.org/apps/deployggb.js'], function ($, GG
                 const scalingContainer = document.getElementsByClassName(scalingContainers[slot])[0];
                 // We should always find this container, just check to be extra safe.
                 if (scalingContainer) {
-                    // Width of the scaling container is being set after the applet has been loaded. So no need to specify it here.
+                    // Width of the scaling container is being set after the applet has been loaded.
                     scalingContainer.style.overflowX = 'auto';
                     scalingContainer.style.overflowY = 'hidden';
                 }
             }
 
-            // parameters.currentvals = JSON.parse(ggbDataset.vars);
             this.ggbDatasetVars = JSON.parse(ggbDataset.vars);
             parameters.language = ggbDataset.lang;
             parameters.moodle = "takingQuiz";
@@ -147,13 +140,22 @@ define(['jquery', 'https://www.geogebra.org/apps/deployggb.js'], function ($, GG
             this.exerciseresultinput[slot] = $(document.getElementById(ggbDataset.exerciseresultinput));
             this.responsevars[slot] = JSON.parse(ggbDataset.responsevars);
         },
+
+        /**
+         * Prevent enter key from submitting the form.
+         *
+         * @param {Event} e The keyboard event.
+         * @returns {boolean} True if the key should be allowed.
+         */
         checkEnter: function(e) {
             e = e || event;
             var txtArea = /textarea/i.test((e.target || e.srcElement).tagName);
             return txtArea || (e.keyCode || e.which || e.charCode || 0) !== 13;
         },
 
-
+        /**
+         * Get base64 and check all response variables before form submission.
+         */
         getBase64andCheck: function() {
             for (var i = 0; i < window.GGBQ.answerinput.length; i++) {
                 var ggbApplet = window['ggbApplet' + i];
@@ -161,7 +163,7 @@ define(['jquery', 'https://www.geogebra.org/apps/deployggb.js'], function ($, GG
                     window.GGBQ.b64input[i].val(ggbApplet.getBase64());
                     window.GGBQ.xmlinput[i].val(ggbApplet.getXML());
 
-                    // Workaround, to set all randomized variables.
+                    // Workaround to set all randomized variables.
                     for (const [key, value] of Object.entries(window.GGBQ.ggbDatasetVars)) {
                         ggbApplet.evalCommand(`${key}=${value}`);
                     }

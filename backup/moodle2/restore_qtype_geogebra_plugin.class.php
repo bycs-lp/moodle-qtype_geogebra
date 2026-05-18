@@ -15,59 +15,54 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package        moodlecore
- * @subpackage     backup-moodle2
- * @author         Christoph Stadlbauer <christoph.stadlbauer@geogebra.org>
+ * Restore plugin for qtype_geogebra.
+ *
+ * @package    qtype_geogebra
+ * @author     Christoph Stadlbauer <christoph.stadlbauer@geogebra.org>
  * @copyright  (c) International GeoGebra Institute 2014
- * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
- * restore plugin class that provides the necessary information
- * needed to restore one geogebra qtype plugin
- * copy and edit of shortanswer restore
+ * Provides the necessary information to restore one GeoGebra qtype plugin.
  *
- * @author         Christoph Stadlbauer <christoph.stadlbauer@geogebra.org>
+ * @package    qtype_geogebra
  * @copyright  (c) International GeoGebra Institute 2014
- * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class restore_qtype_geogebra_plugin extends restore_qtype_plugin {
-
     /**
-     * Returns the paths to be handled by the plugin at question level
+     * Returns the paths to be handled by the plugin at question level.
+     *
+     * @return restore_path_element[] The restore paths.
      */
-    protected function define_question_plugin_structure() {
-
-        $paths = array();
-
-        // This qtype uses question_answers, add them.
+    #[\Override]
+    protected function define_question_plugin_structure(): array {
+        $paths = [];
         $this->add_question_question_answers($paths);
 
-        // Add own qtype stuff.
         $elename = 'geogebra';
-        // We used get_recommended_name() so this works.
         $elepath = $this->get_pathfor('/geogebra');
         $paths[] = new restore_path_element($elename, $elepath);
 
-        return $paths; // And we return the interesting paths.
+        return $paths;
     }
 
     /**
-     * Process the qtype/geogebra element
+     * Process the qtype/geogebra element.
+     *
+     * @param array|object $data The data to process.
      */
-    public function process_geogebra($data) {
+    public function process_geogebra($data): void {
         global $DB;
 
-        $data = (object)$data;
+        $data = (object) $data;
         $oldid = $data->id;
 
-        // Detect if the question is created or mapped.
         $oldquestionid = $this->get_old_parentid('question');
         $newquestionid = $this->get_new_parentid('question');
-        $questioncreated = (bool)$this->get_mappingid('question_created', $oldquestionid);
+        $questioncreated = (bool) $this->get_mappingid('question_created', $oldquestionid);
 
-        // If the question has been created by restore, we need to create its
-        // qtype_shortanswer_options too, if they are defined (the gui should ensure this).
         if ($questioncreated) {
             $data->questionid = $newquestionid;
             $newitemid = $DB->insert_record('qtype_geogebra_options', $data);

@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Pridať obmedzenia (podmienky) pre premenné.';
+$string['addconstraints'] = 'Pridať obmedzenia (podmienky) pre premenné.';
 $string['addmorevarblanks'] = 'Miesto pre {no} premenných';
 $string['answerinvalid'] = 'Zadaný reťazec používaný v odpovedi je neplatný. To by sa nemalo stávať.';
 $string['answermissing'] = 'Nebola zadaná odpoveď. Pravdepodobne JavaScript nie je zapnutý v prehliadači, alebo došlo k neznámej chybe';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'Min a max pre náhoné zvolenie nie sú správne špecifi
 $string['minplusstepgtmax'] = 'Min a veľkosť kroku je väčšia ako max pre premennú {$a}, pravdepodobne budete musieť to opraviť v GeoGebra súbore.';
 $string['noappletloaded'] = 'Nie je applet načítaný! Skontrolujte, či je URL adresa správna, a ak vidíte applet po zvolení odkazu, alebo (znovu) načítaní appletu';
 $string['nofractionsumeq1'] = 'Aspoň jedna kombinácia hodnotení musí mať súčet 100%';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'Otázky, ktoré študent riešiť pomocou GeoGebry';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'Pridať GeoGebra úlohu';
 $string['pluginnameediting'] = 'Upraviť GeoGebra úlohu';
 $string['pluginnamesummary'] = 'Verzia výpočtovej otázky, ktorá používa GeoGebru, ktorá ukáže otázku (zadanie) a vyhodnocuje otázku keď prebieha testovanie.';

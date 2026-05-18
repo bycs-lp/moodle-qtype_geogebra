@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = '为变量添加限制(条件).';
+$string['addconstraints'] = '为变量添加限制(条件).';
 $string['addmorevarblanks'] = '{no} 更多变量空白';
 $string['answerinvalid'] = '响应中的回答字符串无效, 这不应该发生.';
 $string['answermissing'] = '响应中的答案丢失, 可能 JavaScript 在浏览器中没有打开或者出现了未知错误';
@@ -55,7 +54,9 @@ $string['mineqmax'] = '对于随机化的最小值和最大值为变量 {$a} 指
 $string['minplusstepgtmax'] = '变量 {$a} 的最小值加上增量大于最大值, 你可能不得不在 GeoGebra 文件中纠正它.';
 $string['noappletloaded'] = '无小程序载入! 检查一下网址是否正确, 并确定选择一个链接或者(重新)载入小程序后是否能看见它';
 $string['nofractionsumeq1'] = '至少成绩的一个组合总和必须达到 100%';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = '学生能用 GeoGebra 解决的问题';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = '添加 GeoGebra 问题';
 $string['pluginnameediting'] = '编辑 GeoGebra 问题';
 $string['pluginnamesummary'] = '测验时运用 GeoGebra 显示问题并验证答案的计算问题版本.';

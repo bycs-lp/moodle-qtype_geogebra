@@ -22,8 +22,7 @@
  * @copyright  (c) International GeoGebra Institute 2014
  * @license        http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-$string['pluginname'] = 'GeoGebra';
-$string['pluginname_link'] = 'question/type/geogebra';$string['addconstraints'] = 'Tambah kekangan-kekangan (keadaan-keadaan) kepada pembolehubah-pembolehubah.';
+$string['addconstraints'] = 'Tambah kekangan-kekangan (keadaan-keadaan) kepada pembolehubah-pembolehubah.';
 $string['addmorevarblanks'] = 'Kosong untuk {no} lebih pembolehubah-pembolehubah';
 $string['answerinvalid'] = '"answer-string" dalam responds adalah tak sah. Ini tidak harus berlaku.';
 $string['answermissing'] = 'Jawapan di respons adalah hilang. Mungkin JavaScript tidak dipasang pada Pelayar atau ralat yang tidak ketahui berlaku';
@@ -55,7 +54,9 @@ $string['mineqmax'] = 'Minimum dan Maksimum untuk perawakan tidak dinyatakan den
 $string['minplusstepgtmax'] = 'Nilai minimum tambah tokokan adalah lebih besar daripada maksimum untuk pembolehubah {$a}, anda mungkin perlu membetulkan ini dalam fail GeoGebra anda.';
 $string['noappletloaded'] = 'Tiada pemuatan Aplet! Semak jika URL itu betul dan jika anda nampak satu aplet selepas memilih satu pautan atau pemuatan semula aplet';
 $string['nofractionsumeq1'] = 'Sekurang-kurangnya satu kombinasi gred mesti jumlah 100%';
+$string['pluginname'] = 'GeoGebra';
 $string['pluginname_help'] = 'Soalan-soalan di mana pelajar boleh menyelesaikannya menggunakan GeoGebra';
+$string['pluginname_link'] = 'question/type/geogebra';
 $string['pluginnameadding'] = 'Menambah satu soalan GeoGebra';
 $string['pluginnameediting'] = 'Mengedit satu soalan GeoGebra';
 $string['pluginnamesummary'] = 'Satu versi soalan-soalan terpilih di mna menggunakan GeoGebra untuk menunjukkan soalan dan pengesahan jawapan apabila kuiz di ambil.';
