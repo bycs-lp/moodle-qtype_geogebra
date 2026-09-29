@@ -271,4 +271,30 @@ class walkthrough_test extends qbehaviour_walkthrough_test_base {
                     $this->quba->get_response_summary($this->slot)
             );
     }
+
+    #[\PHPUnit\Framework\Attributes\Group('baseline')]
+    /**
+     * Hints taken from the submitted exercise result are cleaned before they are rendered.
+     *
+     * @covers \qtype_geogebra_renderer::specific_feedback
+     */
+    public function test_exercise_hint_is_cleaned(): void {
+        $q = test_question_maker::make_question('geogebra', 'point');
+        $q->isexercise = 1;
+        $this->start_attempt_at_question($q, 'deferredfeedback', 1);
+
+        $this->process_submission([
+            'answer' => '1',
+            'ggbxml' => ggbstringsfortesting::$pointxml,
+            'ggbbase64' => 'asd',
+            'exerciseresult' => '{"a":{"result":"CORRECT","fraction":1,"hint":"Well done<img src=x onerror=alert(1)>"}}',
+        ]);
+        $this->finish();
+
+        // Violation: the event handler must not reach the page; verification: the hint is still shown.
+        $this->check_current_output(
+            new \question_no_pattern_expectation('/<img[^>]*onerror/'),
+            new \question_pattern_expectation('/Well done/')
+        );
+    }
 }

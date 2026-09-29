@@ -199,8 +199,15 @@ EOD;
                             if ($feedback) {
                                 $feedback .= "<br>";
                             };
-                            $feedback .= $question->format_text($assignment->hint, FORMAT_HTML,
-                                $qa, 'question', 'answerfeedback', $itemid++);
+                            $feedback .= $question->format_text(
+                                $assignment->hint,
+                                FORMAT_HTML,
+                                $qa,
+                                'question',
+                                'answerfeedback',
+                                $itemid++,
+                                true
+                            );
                         }
                     }
                 }
@@ -210,8 +217,15 @@ EOD;
                             if ($feedback) {
                                 $feedback .= "<br>";
                             };
-                            $feedback .= $question->format_text($assignment->hint, FORMAT_HTML,
-                                $qa, 'question', 'answerfeedback', $itemid++);
+                            $feedback .= $question->format_text(
+                                $assignment->hint,
+                                FORMAT_HTML,
+                                $qa,
+                                'question',
+                                'answerfeedback',
+                                $itemid++,
+                                true
+                            );
                         }
                     }
                 }
