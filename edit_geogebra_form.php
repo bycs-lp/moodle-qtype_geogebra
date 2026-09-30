@@ -530,15 +530,15 @@ class qtype_geogebra_edit_form extends question_edit_form {
         $lang = current_language();
 
         if (!empty($this->ggbparameters) && !empty($this->ggbviews) && !empty($this->ggbcodebaseversion)) {
-            $applet = <<<EOD
-<article id="applet_parameters" class="qtype_geogebra-article"
-  data-parameters=$this->ggbparameters
-  data-views=$this->ggbviews
-  data-codebase=$this->ggbcodebaseversion
-  data-lang=$lang
-  data-html5NoWebSimple="true">
-</article>
-EOD;
+            $applet = html_writer::tag('article', '', [
+                'id' => 'applet_parameters',
+                'class' => 'qtype_geogebra-article',
+                'data-parameters' => $this->ggbparameters,
+                'data-views' => $this->ggbviews,
+                'data-codebase' => $this->ggbcodebaseversion,
+                'data-lang' => $lang,
+                'data-html5NoWebSimple' => 'true',
+            ]);
             $mform->addElement('html', $applet);
         }
         $PAGE->requires->js_call_amd('qtype_geogebra/ggbt', 'init');
