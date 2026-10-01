@@ -297,4 +297,39 @@ class walkthrough_test extends qbehaviour_walkthrough_test_base {
             new \question_pattern_expectation('/Well done/')
         );
     }
+
+    #[\PHPUnit\Framework\Attributes\Group('baseline')]
+    /**
+     * Applet parameters from the question definition cannot inject attributes into the applet element.
+     *
+     * @covers \qtype_geogebra_renderer::formulation_and_controls
+     */
+    public function test_applet_parameters_cannot_inject_attributes(): void {
+        $q = test_question_maker::make_question('geogebra', 'point');
+        $q->ggbparameters = '{} onmouseover=alert(document.domain)';
+
+        $this->start_attempt_at_question($q, 'interactive', 1);
+
+        $this->check_current_output(
+            new \question_no_pattern_expectation('/data-parameters=\{\}\s/'),
+            new \question_pattern_expectation('/data-parameters="\{\} onmouseover=alert\(document\.domain\)"/')
+        );
+    }
+
+    #[\PHPUnit\Framework\Attributes\Group('baseline')]
+    /**
+     * Regular JSON applet parameters are rendered quoted and escaped in the applet element.
+     *
+     * @covers \qtype_geogebra_renderer::formulation_and_controls
+     */
+    public function test_applet_parameters_are_rendered(): void {
+        $q = test_question_maker::make_question('geogebra', 'point');
+        $q->ggbparameters = '{"id":"applet1","width":800}';
+
+        $this->start_attempt_at_question($q, 'interactive', 1);
+
+        $this->check_current_output(
+            new \question_pattern_expectation('/data-parameters="\{&quot;id&quot;:&quot;applet1&quot;,&quot;width&quot;:800\}"/')
+        );
+    }
 }

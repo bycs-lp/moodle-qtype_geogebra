@@ -136,29 +136,27 @@ class qtype_geogebra_renderer extends qtype_renderer {
         $width = $question->width ?: 0;
         $height = $question->height ?: 0;
         $configuredcodebase = get_config('qtype_geogebra', 'codebase');
-        $codebase = !empty($configuredcodebase) ? $configuredcodebase : '""';
-        $applet = <<<EOD
-<article id=$appletparametersid
-  data-parameters=$question->ggbparameters
-  data-views=$question->ggbviews
-  data-codebase=$codebase
-  data-html5NoWebSimple=true
-  data-div=$ggbdivname
-  data-vars=$currentvals
-  data-b64input=$b64inputname
-  data-xmlinput=$xmlinputname
-  data-answerinput=$answerinputname
-  data-exerciseresultinput=$exerciseinputname
-  data-responsevars=$responsevarsjson
-  data-slot=$slot
-  data-lang=$lang
-  data-forcedimensions=$forcedimensions
-  data-width=$width
-  data-height=$height
-  data-scalingcontainerclass=$scalingcontainerclass
-</article>
-EOD;
-        $result .= $applet;
+        $codebase = !empty($configuredcodebase) ? $configuredcodebase : '';
+        $result .= html_writer::tag('article', '', [
+            'id' => $appletparametersid,
+            'data-parameters' => $question->ggbparameters,
+            'data-views' => $question->ggbviews,
+            'data-codebase' => $codebase,
+            'data-html5NoWebSimple' => 'true',
+            'data-div' => $ggbdivname,
+            'data-vars' => $currentvals,
+            'data-b64input' => $b64inputname,
+            'data-xmlinput' => $xmlinputname,
+            'data-answerinput' => $answerinputname,
+            'data-exerciseresultinput' => $exerciseinputname,
+            'data-responsevars' => $responsevarsjson,
+            'data-slot' => $slot,
+            'data-lang' => $lang,
+            'data-forcedimensions' => $forcedimensions,
+            'data-width' => $width,
+            'data-height' => $height,
+            'data-scalingcontainerclass' => $scalingcontainerclass,
+        ]);
         $this->page->requires->js_call_amd('qtype_geogebra/ggbq', 'init', array($appletparametersid));
 
         if ($qa->get_state() == question_state::$invalid) {
