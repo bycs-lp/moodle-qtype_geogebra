@@ -197,8 +197,15 @@ class qtype_geogebra_renderer extends qtype_renderer {
                             if ($feedback) {
                                 $feedback .= "<br>";
                             };
-                            $feedback .= $question->format_text($assignment->hint, FORMAT_HTML,
-                                $qa, 'question', 'answerfeedback', $itemid++);
+                            $feedback .= $question->format_text(
+                                $assignment->hint,
+                                FORMAT_HTML,
+                                $qa,
+                                'question',
+                                'answerfeedback',
+                                $itemid++,
+                                true
+                            );
                         }
                     }
                 }
@@ -208,8 +215,15 @@ class qtype_geogebra_renderer extends qtype_renderer {
                             if ($feedback) {
                                 $feedback .= "<br>";
                             };
-                            $feedback .= $question->format_text($assignment->hint, FORMAT_HTML,
-                                $qa, 'question', 'answerfeedback', $itemid++);
+                            $feedback .= $question->format_text(
+                                $assignment->hint,
+                                FORMAT_HTML,
+                                $qa,
+                                'question',
+                                'answerfeedback',
+                                $itemid++,
+                                true
+                            );
                         }
                     }
                 }
