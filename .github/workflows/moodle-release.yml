@@ -1,0 +1,12 @@
+name: Moodle Plugin Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    uses: bycs-lp/moodle-ci-workflows/.github/workflows/moodle-release.yml@main
+    with:
+      tag: ${{ github.event.release.tag_name }}
+    secrets: inherit
